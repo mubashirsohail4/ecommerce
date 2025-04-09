@@ -2,9 +2,13 @@ import express from 'express';
 import morgan from 'morgan';
 import helmet from 'helmet';
 import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config(); // Load environment variables from .env file
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000; // Use PORT from .env or default to 3000
+
 
 app.use(express.json()); // Middleware to parse JSON bodies
 app.use(cors()); // CORS middleware to allow cross-origin requests
@@ -15,6 +19,6 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
