@@ -1,24 +1,50 @@
-import express from 'express';
-import morgan from 'morgan';
-import helmet from 'helmet';
-import cors from 'cors';
-import dotenv from 'dotenv';
+import express from "express";
+import helmet from "helmet";
+import morgan from "morgan";
+import cors from "cors";
+import dotenv from "dotenv";
+
+// import productRoutes from "./routes/productRoutes.js";
+import { sql } from "./config/db.js";
 
 dotenv.config(); // Load environment variables from .env file
 
 const app = express();
-const PORT = process.env.PORT || 3000; // Use PORT from .env or default to 3000
+const PORT = process.env.PORT || 3000;
 
 
-app.use(express.json()); // Middleware to parse JSON bodies
-app.use(cors()); // CORS middleware to allow cross-origin requests
-app.use(morgan('dev')); // Logging middleware
-app.use(helmet()); // Security middleware
+app.use(express.json());
+app.use(cors());
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+  })
+); // helmet is a security middleware that helps you protect your app by setting various HTTP headers
+app.use(morgan("dev")); // log the requests
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+// app.use("/api/products", productRoutes);
+
+async function initDB() {
+  try {
+    await sql`
+      CREATE TABLE IF NOT EXISTS products (
+        id SERIAL PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        image VARCHAR(255) NOT NULL,
+        price DECIMAL(10, 2) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+      )
+    `;
+
+    console.log("Database initialized successfully");
+  } catch (error) {
+    console.log("Error initDB", error);
+  }
+}
+
+initDB().then(() => {
+  app.listen(PORT, () => {
+    console.log("Server is running on port " + PORT);
+  });
 });
