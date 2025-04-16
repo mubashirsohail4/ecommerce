@@ -4,10 +4,9 @@ import morgan from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
 
-// import productRoutes from "./routes/productRoutes.js";
+import productRoutes from "./routes/productRoutes.js";
 import { sql } from "./config/db.js";
-
-dotenv.config(); // Load environment variables from .env file
+dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -23,7 +22,7 @@ app.use(
 app.use(morgan("dev")); // log the requests
 
 
-// app.use("/api/products", productRoutes);
+app.use("/api/products", productRoutes);
 
 async function initDB() {
   try {
