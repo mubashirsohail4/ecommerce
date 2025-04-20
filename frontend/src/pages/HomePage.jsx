@@ -5,87 +5,87 @@ import ProductCard from "../components/ProductCard";
 // import AddProductModal from "../components/AddProductModal";
 
 function HomePage() {
-  // const { products, loading, error, fetchProducts } = useProductStore();
+  const { products, loading, error, fetchProducts } = useProductStore();
 
   // Testing
-  let products = [
-    {
-      id: 1,
-      name: "Product 1",
-      price: 10.0,
-      image: "https://picsum.photos/500/600",
-    },
-    {
-      id: 2,
-      name: "Product 2",
-      price: 20.0,
-      image: "https://picsum.photos/500/600",
-    },
-    {
-      id: 3,
-      name: "Product 3",
-      price: 30.0,
-      image: "https://picsum.photos/500/600",
-    },
-    {
-      id: 4,
-      name: "Product 4",
-      price: 40.0,
-      image: "https://picsum.photos/500/600",
-    },
-    {
-      id: 5,
-      name: "Product 5",
-      price: 50.0,
-      image: "https://picsum.photos/500/600",
-    },
-    {
-      id: 6,
-      name: "Product 6",
-      price: 60.0,
-      image: "https://picsum.photos/500/600",
-    },
-    {
-      id: 7,
-      name: "Product 7",
-      price: 70.0,
-      image: "https://picsum.photos/500/600",
-    },
-    {
-      id: 8,
-      name: "Product 8",
-      price: 80.0,
-      image: "https://picsum.photos/500/600",
-    },
-    {
-      id: 9,
-      name: "Product 9",
-      price: 90.0,
-      image: "https://picsum.photos/500/600",
-    },
-    {
-      id: 10,
-      name: "Product 10",
-      price: 100.0,
-      image: "https://picsum.photos/500/600",
-    },
-    {
-      id: 11,
-      name: "Product 11",
-      price: 110.0,
-      image: "https://picsum.photos/500/600",
-    },
-    {
-      id: 12,
-      name: "Product 12",
-      price: 120.0,
-      image: "https://picsum.photos/500/600",
-    }
-  ];
+  // let products = [
+  //   {
+  //     id: 1,
+  //     name: "Product 1",
+  //     price: 10.0,
+  //     image: "https://picsum.photos/500/600",
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Product 2",
+  //     price: 20.0,
+  //     image: "https://picsum.photos/500/600",
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Product 3",
+  //     price: 30.0,
+  //     image: "https://picsum.photos/500/600",
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Product 4",
+  //     price: 40.0,
+  //     image: "https://picsum.photos/500/600",
+  //   },
+  //   {
+  //     id: 5,
+  //     name: "Product 5",
+  //     price: 50.0,
+  //     image: "https://picsum.photos/500/600",
+  //   },
+  //   {
+  //     id: 6,
+  //     name: "Product 6",
+  //     price: 60.0,
+  //     image: "https://picsum.photos/500/600",
+  //   },
+  //   {
+  //     id: 7,
+  //     name: "Product 7",
+  //     price: 70.0,
+  //     image: "https://picsum.photos/500/600",
+  //   },
+  //   {
+  //     id: 8,
+  //     name: "Product 8",
+  //     price: 80.0,
+  //     image: "https://picsum.photos/500/600",
+  //   },
+  //   {
+  //     id: 9,
+  //     name: "Product 9",
+  //     price: 90.0,
+  //     image: "https://picsum.photos/500/600",
+  //   },
+  //   {
+  //     id: 10,
+  //     name: "Product 10",
+  //     price: 100.0,
+  //     image: "https://picsum.photos/500/600",
+  //   },
+  //   {
+  //     id: 11,
+  //     name: "Product 11",
+  //     price: 110.0,
+  //     image: "https://picsum.photos/500/600",
+  //   },
+  //   {
+  //     id: 12,
+  //     name: "Product 12",
+  //     price: 120.0,
+  //     image: "https://picsum.photos/500/600",
+  //   }
+  // ];
 
-  // useEffect(() => {
-  //   fetchProducts();
-  // }, [fetchProducts]);
+  useEffect(() => {
+    fetchProducts();
+  }, [fetchProducts]);
 
   return (
     <main className="max-w-6xl mx-auto px-4 py-8 ">
@@ -120,17 +120,17 @@ function HomePage() {
         </div>
       )} */}
 
-      {/* {loading ? (
+      {loading ? (
         <div className="flex justify-center items-center h-64">
           <div className="loading loading-spinner loading-lg" />
         </div>
-      ) : ( */}
+      ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {products.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
-      {/* )} */}
+      )}
     </main>
   );
 }
