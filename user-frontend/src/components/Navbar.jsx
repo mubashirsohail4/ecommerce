@@ -1,12 +1,9 @@
-import { Link, useResolvedPath } from "react-router-dom";
-import { ShoppingBagIcon, ShoppingCartIcon } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ShoppingBagIcon} from "lucide-react";
 import ThemeSelector from "./ThemeSelector";
 import { useProductStore } from "../store/useProductStore";
 
 function Navbar() {
-  const { pathname } = useResolvedPath();
-  const isHomePage = pathname === "/";
-
   const { products } = useProductStore();
 
   return (
@@ -17,31 +14,52 @@ function Navbar() {
           <div className="flex-1 lg:flex-none">
             <Link to="/" className="hover:opacity-80 transition-opacity">
               <div className="flex items-center gap-2">
-                <ShoppingCartIcon className="size-9 text-primary" />
                 <span
                   className="font-semibold font-mono tracking-widest text-2xl 
                     bg-clip-text text-transparent bg-linear-to-r from-primary to-secondary"
                 >
-                  BARGAINSTORE
+                  ECOMMERCE
                 </span>
               </div>
             </Link>
+          </div>
+
+          <div className="navbar-center hidden lg:flex">
+            <ul className="menu menu-horizontal px-1">
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/store">Store</Link>
+              </li>
+              <li>
+                <details>
+                  <summary>Parent</summary>
+                  <ul className="p-2">
+                    <li>
+                      <a>Submenu 1</a>
+                    </li>
+                    <li>
+                      <a>Submenu 2</a>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+            </ul>
           </div>
 
           {/* RIGHT SECTION */}
           <div className="flex items-center gap-4">
             <ThemeSelector />
 
-            {isHomePage && (
-              <div className="indicator">
-                <div className="p-2 rounded-full hover:bg-base-200 transition-colors">
-                  <ShoppingBagIcon className="size-5" />
-                  <span className="badge badge-sm badge-primary indicator-item">
-                    {products.length}
-                  </span>
-                </div>
+            <div className="indicator">
+              <div className="p-2 rounded-full hover:bg-base-200 transition-colors">
+                <ShoppingBagIcon className="size-5" />
+                <span className="badge badge-sm badge-primary indicator-item">
+                  {products.length}
+                </span>
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>
