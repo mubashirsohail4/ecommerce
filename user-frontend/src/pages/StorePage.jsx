@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useProductStore } from "../store/useProductStore";
 import { PackageIcon, PlusCircleIcon, RefreshCwIcon } from "lucide-react";
 import ProductCard from "../components/ProductCard";
-import AddProductModal from "../components/AddProductModal";
 
 function HomePage() {
   const { products, loading, error, fetchProducts } = useProductStore();
@@ -13,20 +12,9 @@ function HomePage() {
 
   return (
     <main className="max-w-6xl mx-auto px-4 py-8 ">
-      <div className="flex justify-between items-center mb-8">
-        <button
-          className="btn btn-primary"
-          onClick={() => document.getElementById("add_product_modal").showModal()}
-        >
-          <PlusCircleIcon className="size-5 mr-2" />
-          Add Product
-        </button>
-        <button className="btn btn-ghost btn-circle" onClick={fetchProducts}>
-          <RefreshCwIcon className="size-5" />
-        </button>
+      <div className="mb-8">
+        <h1 className="text-2xl font-semibold">Store</h1>
       </div>
-
-      <AddProductModal />
 
       {error && <div className="alert alert-error mb-8">{error}</div>}
 
@@ -37,9 +25,6 @@ function HomePage() {
           </div>
           <div className="text-center space-y-2">
             <h3 className="text-2xl font-semibold ">No products found</h3>
-            <p className="text-gray-500 max-w-sm">
-              Get started by adding your first product to the inventory
-            </p>
           </div>
         </div>
       )}
