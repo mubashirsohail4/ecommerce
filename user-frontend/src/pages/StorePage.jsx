@@ -14,6 +14,7 @@ function HomePage() {
     <main className="max-w-6xl mx-auto px-4 py-8 ">
       <div className="mb-8">
         <h1 className="text-2xl font-semibold">Store</h1>
+        <p>{products.length} Products</p>
       </div>
 
       {error && <div className="alert alert-error mb-8">{error}</div>}
