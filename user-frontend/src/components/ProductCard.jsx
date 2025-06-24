@@ -20,7 +20,7 @@ function ProductCard({ product }) {
 
         {/* CARD ACTIONS */}
         <div className="card-actions justify-end mt-4">
-          <button className="btn btn-outline btn-secondary">Add to Cart</button>
+          <button className="btn btn-outline btn-primary">Add to Cart</button>
         </div>
       </div>
     </div>
