@@ -30,6 +30,9 @@ function Navbar() {
                 <Link to="/store">Store</Link>
               </li>
               <li>
+                <Link to="/admin">Admin</Link>
+              </li>
+              <li>
                 <details>
                   <summary>Parent</summary>
                   <ul className="p-2">
