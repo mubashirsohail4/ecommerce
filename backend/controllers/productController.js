@@ -4,7 +4,7 @@ export const getProducts = async (req, res) => {
   try {
     const products = await sql`
       SELECT * FROM products
-      ORDER BY created_at DESC
+      ORDER BY id ASC
     `;
 
     console.log("fetched products", products);

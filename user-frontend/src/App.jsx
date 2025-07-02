@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import HomePage from "./pages/HomePage";
 import StorePage from "./pages/StorePage";
 import ProductPage from "./pages/ProductPage";
+import AdminPage from "./pages/AdminPage";
 
 import { Routes, Route } from "react-router-dom";
 import { useThemeStore } from "./store/useThemeStore";
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/store" element={<StorePage />} />
         <Route path="/product/:id" element={<ProductPage />} />
+        <Route path="/admin" element={<AdminPage />} />
       </Routes>
 
       <Toaster />
