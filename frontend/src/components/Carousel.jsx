@@ -46,7 +46,7 @@ export default function Carousel() {
               alt={`Slide ${i + 1}`}
               className="w-full h-full object-cover"
             />
-          <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-6xl font-bold">
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-4xl md:text-6xl font-bold">
             {slide.title}
             <span className="text-xl mt-2 block">Shop Now</span>
           </div>
